@@ -38,9 +38,9 @@ class Controller extends BaseController
             VALUES (?, ?, ?, ?, ?)
         ";
 
-        DB::insert($query, [$title, $makingTime, $serves, $ingredients, $cost]);
+        $data= DB::insert($query, [$title, $makingTime, $serves, $ingredients, $cost]);
 
-        return response()->json(['message' => 'Recipe created successfully']);
+        return response()->json(['message' => 'Recipe successfully created', 'recipe'=> $data]);
     }
     
     public function updateRecipe(Request $request, $id)
