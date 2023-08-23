@@ -18,8 +18,12 @@ class Controller extends BaseController
 
     public function getAllRecipes()
     {
+
+
         $recipes = DB::table('recipes')->get();
-        return response()->json($recipes);
+        return response()->json(['recipes' => $recipes]);
+
+        
     }
     public function createRecipe(Request $request)
     {
