@@ -20,7 +20,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('greetings', [Controller::class ,'greetings']);
-Route::get('getRecipes', [Controller::class ,'getAllRecipes']);
+
+Route::group(['prefix' => '{recipes}'], function() {
+    Route::get('', [Controller::class ,'getAllRecipes']);
+    Route::get('/{id}', [RecipeController::class, 'getRecipeById']);
+    Route::post('', [Controller::class ,'createRecipe']);
+    Route::patch('/{id}', [Controller::class, 'updateRecipe']);
+    Route::delete('/{id}', [Controller::class, 'deleteRecipe']);
+    
+    
+
+
+
+});
 
 
 Route::get('/check-connection', function () {
