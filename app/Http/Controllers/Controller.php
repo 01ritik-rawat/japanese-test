@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\DB;
 
 class Controller extends BaseController
 {
@@ -12,5 +13,11 @@ class Controller extends BaseController
     public function greetings(){
         print("1, 2, 3, 4 ...");
         return "hi this is Ritik";
+    }
+
+    public function getAllRecipes()
+    {
+        $recipes = DB::table('recipes')->get();
+        return response()->json($recipes);
     }
 }

@@ -20,6 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('greetings', [Controller::class ,'greetings']);
+Route::get('greetings', [Controller::class ,'getAllRecipes']);
+
+
 Route::get('/check-connection', function () {
     return response()->json(['message' => "We're connected"]);
 });
